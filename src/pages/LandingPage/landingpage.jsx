@@ -39,7 +39,7 @@ function LandingPage() {
             </Link>
           </div>
           <div className="register-nav">
-            <Link to="/login">
+            <Link to="#">
               <li>Login</li>
             </Link>
             <Link to="/signup">

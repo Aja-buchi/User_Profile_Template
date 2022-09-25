@@ -1,14 +1,20 @@
 
 import LandingPage from './pages/LandingPage/landingpage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Signup from './pages/Signup/signup';
+// import { Toaster } from "react-hot-toast";
+
 
 
 function App() {
   return (
     <>
+    {/* <Toaster/> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/signup" element={<Signup />} />
+          {/* <Route path="/login" element={<Login />} /> */}
           {/* <Route path="/forgot-password" element={<VerifyEmailInput />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route
