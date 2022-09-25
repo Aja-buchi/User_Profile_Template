@@ -6,11 +6,11 @@ import './signup.css'
 export default function Signup() {
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
+      firstName: "👤",
+      lastName: "👤",
       email: "",
-      password: "",
-      confirmpassword: "",
+      password: "🔒",
+      confirmpassword: "🔒",
     },
     validationSchema: Yup.object({
       firstName: Yup.string()
@@ -21,8 +21,13 @@ export default function Signup() {
         .required("Required"),
       email: Yup.string().email("Invalid email address").required("Required"),
       password: Yup.string().required("This field is required"),
-      confirmpassword: Yup.string().test('passwords-match', 'Passwords must match', function(value){
-      return this.parent.password === value})
+      confirmpassword: Yup.string().test(
+        "passwords-match",
+        "Passwords must match",
+        function (value) {
+          return this.parent.password === value;
+        }
+      ),
     }),
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
