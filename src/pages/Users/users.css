@@ -1,0 +1,16 @@
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.btn-container button {
+    background: linear-gradient(to right, #4361ee, #0520a4);
+    color: #fff;
+    border: none;
+    border-radius: .3rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: .6rem;
+}
+

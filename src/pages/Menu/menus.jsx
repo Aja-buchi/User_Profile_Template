@@ -7,27 +7,27 @@ import Navbar from "../../components/Navbar/Navbar";
 
 export default function Menu(){
 
-  const [location, setLocation] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
 
   useEffect(() => {
-    setLocation(() => {
       return navigator.geolocation.getCurrentPosition((position) => {
-        console.log(position);
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
       }, (error) => {
-        console.log(error);
+        alert("Error code: " + error.message);
       })
 
-    }, [])
-  })
+  }, [latitude, longitude])
 
-  console.log(location);
     return (
       <>
-        <Navbar/>
+        <Navbar />
 
         <main>
           <img src={locationImage} className="image" />
-          <p>Your current location is : {location}</p>
+          <p>Your current location latitude is : {latitude}</p>
+          <p>Your current location longitude is : {longitude}</p>
         </main>
       </>
     );

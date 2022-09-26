@@ -24,3 +24,7 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+.users-link:hover, .account-link:hover{
+    color: #fff;
+}
