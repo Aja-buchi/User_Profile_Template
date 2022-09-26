@@ -3,6 +3,9 @@ import LandingPage from './pages/LandingPage/landingpage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signup from './pages/Signup/signup';
 import Login from './pages/Login/login';
+import Menu from './pages/Menu/menus';
+import Profile from './pages/Profile/profile';
+import Users from './pages/Users/users';
 // import { Toaster } from "react-hot-toast";
 
 
@@ -10,12 +13,15 @@ import Login from './pages/Login/login';
 function App() {
   return (
     <>
-    {/* <Toaster/> */}
+      {/* <Toaster/> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/menus" element={<Menu />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/profile" element={<Profile />} />
           {/* <Route path="/forgot-password" element={<VerifyEmailInput />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route

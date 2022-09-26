@@ -2,23 +2,17 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import './signup.css'
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
+  const nav = useNavigate();
   const formik = useFormik({
     initialValues: {
-      firstName: "👤",
-      lastName: "👤",
       email: "",
-      password: "🔒",
-      confirmpassword: "🔒",
+      password: "",
+      confirmpassword: "",
     },
     validationSchema: Yup.object({
-      firstName: Yup.string()
-        .max(15, "Must be 15 characters or less")
-        .required("Required"),
-      lastName: Yup.string()
-        .max(20, "Must be 20 characters or less")
-        .required("Required"),
       email: Yup.string().email("Invalid email address").required("Required"),
       password: Yup.string().required("This field is required"),
       confirmpassword: Yup.string().test(
@@ -29,45 +23,40 @@ export default function Signup() {
         }
       ),
     }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async(values) => {
+      // e.preventDefault();
+      try {
+       const response = await fetch("https://reqres.in/api/register", {
+         headers: {
+           "Content-Type": "application/json",
+         },
+         method: "POST",
+         body: JSON.stringify(values),
+       });
+       console.log(response);
+
+       const {token} = await response.json();
+       alert(token);
+
+       if(response.status == 200) {
+         nav('/login');
+       }
+       
+      } catch (error) {
+        
+      }
     },
   });
   return (
     <div className="body">
       <div className="batch"></div>
       <form onSubmit={formik.handleSubmit} className="formall">
-        <label htmlFor="firstName">First Name</label>
-        <input
-          id="firstName"
-          name="firstName"
-          type="text"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.firstName}
-        />
-        {formik.touched.firstName && formik.errors.firstName ? (
-          <div style={{ color: "red" }}>{formik.errors.firstName}</div>
-        ) : null}
-
-        <label htmlFor="lastName">Last Name</label>
-        <input
-          id="lastName"
-          name="lastName"
-          type="text"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.lastName}
-        />
-        {formik.touched.lastName && formik.errors.lastName ? (
-          <div style={{ color: "red" }}>{formik.errors.lastName}</div>
-        ) : null}
-
-        <label htmlFor="email">Email Address</label>
+        <label htmlFor="email">Email</label>
         <input
           id="email"
           name="email"
           type="email"
+          placeholder="Email"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -76,11 +65,12 @@ export default function Signup() {
           <div style={{ color: "red" }}>{formik.errors.email}</div>
         ) : null}
 
-        <label htmlFor="email">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           id="password"
           name="password"
           type="password"
+          placeholder="Password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
@@ -89,10 +79,11 @@ export default function Signup() {
           <div style={{ color: "red" }}>{formik.errors.password}</div>
         ) : null}
 
-        <label htmlFor="email">Confirm password</label>
+        <label htmlFor="confirmPassword">Confirm password</label>
         <input
-          id="password"
+          id="confirmpassword"
           name="confirmpassword"
+          placeholder="Confirm Password"
           type="password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
