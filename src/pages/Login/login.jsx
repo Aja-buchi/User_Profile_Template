@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
+import { setToken } from "../../utils/localStorage";
+import { loginFailureAlert, loginSuccessAlert } from "../../utils/alerts";
 
 
 
 export default function Login() {
+
+  const initialState = {
+    token: null,
+    id: null,
+  };
+
+  const [state, setState] = useState(initialState);
+
     const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -18,18 +28,26 @@ export default function Login() {
       password: Yup.string().required("This field is required"),
     }),
     onSubmit: async(values) => {
-      const response = await fetch("https://reqres.in/api/login", {
-        headers: {
-           "Content-Type": "application/json",
-         },
-         method: "POST",
-         body: JSON.stringify(values),  
-      });
+      try {
+        const response = await fetch("https://reqres.in/api/login", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify(values),
+        });
 
-      const {token} = await response.json();
+        const { token } = await response.json();
 
-      if(response.status == 200) {
-          navigate('/menus');
+        if (response.status == 200) {
+          setToken(token);
+          setState((prev) => ({ ...prev, token }));
+
+          loginSuccessAlert();
+          navigate("/menu");
+        }
+      } catch (error) {
+        loginFailureAlert();
       }
     },
   });

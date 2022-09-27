@@ -12,18 +12,7 @@ function LandingPage() {
             <li className="logo">ShikiniMoney</li>
           </div>
           <div className="navbar">
-            {/* <Link to="#">
-              <li>Home</li>
-            </Link>
-            <Link to="#">
-              <li>Features</li>
-            </Link>
-            <Link to="#">
-              <li>About</li>
-            </Link>
-            <Link to="#">
-              <li>Contact Us</li>
-            </Link> */}
+            
           </div>
           <div className="register-nav">
             <Link to="/login">

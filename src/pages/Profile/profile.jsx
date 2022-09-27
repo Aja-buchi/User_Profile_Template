@@ -63,7 +63,7 @@ function Profile() {
               <label htmlFor="email">Email</label> <br />
               <div>
                 <input type="email" value={email}/>
-                <span>
+                {/* <span>
                   <button
                     type="button"
                     className="edit-btn"
@@ -80,7 +80,7 @@ function Profile() {
                   >
                     Delete
                   </button>
-                </span>
+                </span> */}
               </div>
             </div>
 

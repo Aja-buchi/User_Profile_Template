@@ -54,34 +54,35 @@ function Users() {
       <>
         <Navbar />
 
-        <section>
+        <section className="users-section">
           <h1 className="text-center p-4">List Of Users</h1>
 
-          <table className="table m-4">
-            <thead>
-              <tr>
-                <th scope="col">S/N</th>
-                <th scope="col">Email</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Avatar</th>
-              </tr>
-            </thead>
+          <div className="users-container">
+            {usersList.map((user) => {
+              return (
+                <div className="user-card" key={user.id}>
+                  <div className="user-imageContainer">
+                    <img src={user.avatar} alt="user" className="user-img" />
+                  </div>
 
-            <tbody>
-              {usersList.map((user) => {
-                return (
-                  <tr key={user.id}>
-                    <th scope="row">{user.id}</th>
-                    <td>{user.email}</td>
-                    <td>{user.first_name}</td>
-                    <td>{user.last_name}</td>
-                    <td>{user.avatar}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                  <div className="user-details">
+                    <div className="user-email">
+                      <h6>Email</h6>
+                      <p>{user.email}</p>
+                    </div>
+                    <div className="user-firstName">
+                      <h6>First Name</h6>
+                      <p>{user.first_name}</p>
+                    </div>
+                    <div className="user-lastName">
+                      <h6>Last Name</h6>
+                      <p>{user.last_name}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
           <div className="btn-container">
             <button type="button" onClick={handlePageDecrease}>Prev</button>

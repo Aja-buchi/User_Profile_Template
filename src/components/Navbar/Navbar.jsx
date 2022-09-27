@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
+import { clearLocalStorage, getToken } from "../../utils/localStorage";
+import { useNavigate } from "react-router-dom";
+
+
 
 function Navbar() {
+
+  const navigate = useNavigate();
+
+
+  const authLogout = () => {
+    clearLocalStorage();
+    navigate("/");
+    return;
+  };
+
+  const token = getToken();
     return (
       <>
         <nav className="navbar-list">
@@ -18,6 +33,14 @@ function Navbar() {
                 My Account
               </Link>
             </span>
+
+            {token && (
+              <span>
+                <button className="btn btn-sm btn-light" onClick={authLogout}>
+                  LogOut 
+                </button>
+            </span> 
+            )}
           </div>
         </nav>
       </>

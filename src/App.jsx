@@ -6,6 +6,8 @@ import Login from './pages/Login/login';
 import Menu from './pages/Menu/menus';
 import Profile from './pages/Profile/profile';
 import Users from './pages/Users/users';
+import ProtectedRoute from './Auth-Context/protectedroute';
+import CreateUser from './pages/Createuser/createUser';
 // import { Toaster } from "react-hot-toast";
 
 
@@ -19,9 +21,22 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/menus" element={<Menu />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/menu"
+            element={<ProtectedRoute children={<Menu />} />}
+          />
+          <Route
+            path="/users"
+            element={<ProtectedRoute children={<Users />} />}
+          />
+          <Route
+            path="/profile"
+            element={<ProtectedRoute children={<Profile />} />}
+          />
+          <Route
+            path="/create-user"
+            element={<ProtectedRoute children={<CreateUser />} />}
+          />
           {/* <Route path="/forgot-password" element={<VerifyEmailInput />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route

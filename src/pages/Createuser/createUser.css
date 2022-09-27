@@ -21,7 +21,7 @@
 
 }
 
-.signup-btn{
+.login-btn{
     background-image: linear-gradient(to right, #4361ee, #0520a4);
     width: 100%;
     color: white;
@@ -38,7 +38,6 @@
     border-radius: 3px;
     height: 3.5rem;
     font-family: FontAwesome;
-    margin-right: .8rem;
 }
 .formall label{
     font-family: 'Times New Roman', Times, serif;
