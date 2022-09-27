@@ -1,7 +1,7 @@
 import React from "react";
 import "./landingpage.css";
 import { Link } from "react-router-dom";
-import headerImage from "./images/header_image.png";
+import headerImage from "../../Assets/images/header_image.png";
 
 function LandingPage() {
   return (

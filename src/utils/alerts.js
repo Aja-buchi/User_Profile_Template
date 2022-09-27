@@ -1,3 +1,4 @@
+// import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export const registerSuccessAlert = () => {
@@ -35,7 +36,6 @@ export const loginSuccessAlert = () => {
     showConfirmButton: true,
     confirmButtonColor: "#93d413",
     html: "Proceed to the dashboard",
-    
   });
 };
 
@@ -60,5 +60,7 @@ export const createUserSuccessAlert = () => {
     showConfirmButton: true,
     confirmButtonColor: "#93d413",
     html: "User created, proceed to other tasks",
+    footer: `<a href="/update-user">Update User </a> <br/>
+              <a href="/delete-user">Delete User </a>`,
   });
 };

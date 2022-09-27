@@ -45,8 +45,7 @@ export default function Signup() {
          method: "POST",
          body: JSON.stringify(values),
        });
-       console.log(response);
-
+       
        const {token, id} = await response.json();
 
        if(response.status == 200) {

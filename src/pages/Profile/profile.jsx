@@ -14,9 +14,7 @@ function Profile() {
     useEffect(() => {
         async function getUser(){
             const response = await fetch("https://reqres.in/api/users/2");
-            // console.log(response);
             const data = await response.json();
-            // console.log(data);
             if(response.status === 200) {
                 setEmail(data.data.email);
                 setFirstName(data.data.first_name);
@@ -27,9 +25,6 @@ function Profile() {
 
         getUser();
     }, [firstName, lastName])
-
-
-    // const reqBody = {email, }
 
     const handleEdit = async () => {
         console.log("edit this please!");
@@ -63,24 +58,6 @@ function Profile() {
               <label htmlFor="email">Email</label> <br />
               <div>
                 <input type="email" value={email}/>
-                {/* <span>
-                  <button
-                    type="button"
-                    className="edit-btn"
-                    onClick={handleEdit}
-                  >
-                    Edit
-                  </button>
-                </span>
-                <span>
-                  <button
-                    type="button"
-                    className="delete-btn"
-                    onClick={handleDelete}
-                  >
-                    Delete
-                  </button>
-                </span> */}
               </div>
             </div>
 

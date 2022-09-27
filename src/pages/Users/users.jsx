@@ -19,10 +19,7 @@ function Users() {
             if(response.status === 200) {
                 setUsersList(data.data)
 
-                // console.log(usersList);
                 totalPageCount = data.total_pages;
-
-                // console.log(totalPageCount);
             }
         }
 
@@ -37,7 +34,6 @@ function Users() {
         setId((prevState) => {
             return prevState + 1;
         });
-        console.log("it works!")
     };
 
     const handlePageDecrease = () => {

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
-import "./createUser.css";
+import "./deleteuser.css";
 import { useNavigate } from "react-router-dom";
 import { createUserSuccessAlert } from "../../utils/alerts";
-import Navbar from "../../components/Navbar/Navbar";
 
-export default function CreateUser() {
+export default function DeleteUser() {
   const initialState = {
     token: null,
     id: null,
@@ -19,36 +18,29 @@ export default function CreateUser() {
       name: "",
       job: "",
     },
-    
+
     onSubmit: async (values) => {
       try {
-        const response = await fetch("https://reqres.in/api/users", {
+        const response = await fetch("https://reqres.in/api/users/2", {
           headers: {
             "Content-Type": "application/json",
           },
-          method: "POST",
+          method: "DELETE",
           body: JSON.stringify(values),
         });
 
-        if (response.status == 201) {
-          
+        if (response.status == 200) {
           createUserSuccessAlert();
         }
-      } catch (error) {
-          
-      }
+      } catch (error) {}
     },
   });
   return (
-    <>
-    <Navbar />
-
     <div className="body">
       <div className="batch"></div>
       <form onSubmit={formik.handleSubmit} className="formall">
-
         <div>
-            <h1>CREATE USER</h1>
+          <h1>DELETE USER</h1>
         </div>
 
         <label htmlFor="text">Name</label>
@@ -70,12 +62,11 @@ export default function CreateUser() {
           onBlur={formik.handleBlur}
           value={formik.values.job}
         />
-        
+
         <button type="login" className="login-btn">
-          Create User
+          Delete User
         </button>
       </form>
     </div>
-    </>
   );
 }

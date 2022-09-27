@@ -36,10 +36,18 @@ function Navbar() {
 
             {token && (
               <span>
+                <Link to="/create-user" className="account-link">
+                  Create User
+                </Link>
+              </span>
+            )}
+
+            {token && (
+              <span>
                 <button className="btn btn-sm btn-light" onClick={authLogout}>
-                  LogOut 
+                  LogOut
                 </button>
-            </span> 
+              </span>
             )}
           </div>
         </nav>

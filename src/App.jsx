@@ -8,14 +8,14 @@ import Profile from './pages/Profile/profile';
 import Users from './pages/Users/users';
 import ProtectedRoute from './Auth-Context/protectedroute';
 import CreateUser from './pages/Createuser/createUser';
-// import { Toaster } from "react-hot-toast";
+import UpdateUser from './pages/Updateuser/updateuser';
+import DeleteUser from './pages/Deleteuser/deleteuser';
 
 
 
 function App() {
   return (
     <>
-      {/* <Toaster/> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -37,20 +37,14 @@ function App() {
             path="/create-user"
             element={<ProtectedRoute children={<CreateUser />} />}
           />
-          {/* <Route path="/forgot-password" element={<VerifyEmailInput />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
           <Route
-            path="/password-reset-verification"
-            element={<PasswordResetVerification />}
+            path="/update-user"
+            element={<ProtectedRoute children={<UpdateUser />} />}
           />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/profile" element={<UserProfile />} />
-          <Route path="/email-verification" element={<EmailVerification />} />
-          <Route path="/bank-transfer" element={<BankTransfer />} />
-          <Route path="/local-transfer" element={<LocalTransfer />} />
-          <Route path="/fund-wallet" element={<FundWallet />} /> */}
+          <Route
+            path="/delete-user"
+            element={<ProtectedRoute children={<DeleteUser />} />}
+          />
         </Routes>
       </BrowserRouter>
     </>

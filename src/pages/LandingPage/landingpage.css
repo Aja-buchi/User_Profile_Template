@@ -196,7 +196,6 @@ ul {
 	background-color: #e5e5e5;
 	display: flex;
 	gap: 8rem;
-	/* justify-content: space-between; */
 }
 
 
@@ -380,8 +379,6 @@ ul {
 	background-color: rgba(216, 187, 255, 0.3);
 	display: flex;
 	flex-direction: column;
-	/* justify-content: center; */
-	/* align-content: center; */
 	align-items: center;
 	text-align: center;
 	height: 28.3rem;
